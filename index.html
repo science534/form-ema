@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISA Animation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: radial-gradient(circle at center, #0a1f44, #000814 80%);
+}
+
+/* Bintang */
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation: blink 2s infinite alternate;
+}
+
+@keyframes blink{
+    from{opacity:0.2;}
+    to{opacity:1;}
+}
+
+/* Logo container */
+.logo-container{
+    text-align:center;
+    animation: fadeZoom 3s ease forwards;
+    opacity:0;
+    transform: scale(0.7);
+}
+
+@keyframes fadeZoom{
+    to{
+        opacity:1;
+        transform: scale(1);
+    }
+}
+
+.logo-container img{
+    width:300px;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Floating effect */
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+/* Glow text */
+.glow{
+    font-size:50px;
+    font-weight:bold;
+    color:white;
+    margin-top:15px;
+    animation: glowEffect 2s infinite alternate;
+}
+
+@keyframes glowEffect{
+    from{
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #4da6ff,
+                     0 0 30px #4da6ff;
+    }
+    to{
+        text-shadow: 0 0 20px #fff,
+                     0 0 40px #00ccff,
+                     0 0 60px #00ccff;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="logo-container">
+    <img src="logo-isa.png" alt="ISA Logo">
+    <div class="glow">Indonesia Space Astronomy</div>
+</div>
+
+<script>
+/* Generate Bintang Random */
+for(let i=0; i<120; i++){
+    let star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = Math.random()*100 + "vh";
+    star.style.left = Math.random()*100 + "vw";
+    star.style.animationDuration = (Math.random()*3+1) + "s";
+    document.body.appendChild(star);
+}
+</script>
+
+</body>
+  </html>logo-isa.png
